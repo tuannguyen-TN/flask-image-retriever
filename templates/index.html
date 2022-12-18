@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% block head %}
+<title>Retrievimage</title>
+{% endblock %} {% block body %}
+<div class="content">
+  <h1 style="text-align: center">Online Image Retriever</h1>
+
+  <table style="text-align: center">
+    <tr>
+      <th>Image</th>
+      <th>Added</th>
+      <th>Actions</th>
+    </tr>
+    {% for filename, created_date in images.items() %}
+    <tr>
+      <td>
+        <img
+          src="{{ url_for('get_file', filename=filename) }}"
+          width="150px"
+          height="150px"
+        />
+      </td>
+      <td>{{ created_date }}</td>
+      <td>
+        <a href="/delete/{{ filename }}">Delete</a>
+        <br />
+        {% if not target_image %}
+        <a href="/select/{{ filename }}">Select as target</a>
+        {% elif filename == target_image %}
+        <a href="/deselect">Deselect</a>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <div class="form">
+    <form action="/" method="POST" enctype="multipart/form-data">
+      <input
+        type="file"
+        value="Upload image"
+        name="images"
+        multiple="true"
+        required
+      />
+      <input type="submit" value="Add image" />
+    </form>
+  </div>
+
+  <div class="form">
+    <form action="/predict" method="POST">
+      <input type="radio" name="options" id="1" value="1" checked> 1 </input>
+      <input type="radio" name="options" id="3" value="3"> 3 </input>
+      <input type="radio" name="options" id="5" value="5"> 5 </input>
+      <p></p>
+      {% if target_image %}
+      <input type="submit" value="Predict" />
+      {% else %}
+      <input type="submit" value="Predict" disabled />
+      {% endif %}
+    </form>
+  </div>
+
+  {% if results %}
+  <div>
+    <h3>Target image</h3>
+    <img src="{{ url_for('get_file', filename=target_image) }}" width="300" height="300" />
+    <h3>Top-{{ top_k }} result</h3>
+    <table style="text-align: center">
+      <tr>
+        <th>Image</th>
+        <th>Distance to target image (metric)</th>
+      </tr>
+      {% for item in results %}
+      <tr>
+        <td>
+          <img
+            src="{{ url_for('get_file', filename=item[0]) }}"
+            width="150px"
+            height="150px"
+          />
+        </td>
+        <td>{{ item[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
