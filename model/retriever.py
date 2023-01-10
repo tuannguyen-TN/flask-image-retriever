@@ -53,4 +53,4 @@ def Retriever(model_path, target_image, image_list, top_k):
     return result_info[:min(top_k, len(result_info))], min(top_k, len(result_info))
 
 if __name__ == "__main__":
-    print(Retriever(os.path.abspath('../image-retrieval-0001/FP32/image-retrieval-0001.xml'), sys.argv[1], sys.argv[2], 3))
+    print(Retriever(os.path.abspath('../image-retrieval-0001/FP32/image-retrieval-0001.xml'), sys.argv[1], sys.argv[2], int(sys.argv[3])))
