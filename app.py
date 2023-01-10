@@ -104,7 +104,8 @@ def predict():
             os.remove(app.config['IMAGE_LIST'])
         flash('Please choose a target image first.')
         return redirect('/')
-    app.config['PREDICTIONS'] = Retriever(app.config['MODEL_PATH'], os.path.join(app.config['SAVE_FOLDER'], app.config['TARGET_IMAGE']), app.config['IMAGE_LIST'], app.config['TOP_K'])
+    app.config['PREDICTIONS'] = Retriever(app.config['MODEL_PATH'], os.path.join(app.config['SAVE_FOLDER'], app.config['TARGET_IMAGE']), app.config['IMAGE_LIST'], app.config['TOP_K'])[0]
+    print(app.config['PREDICTIONS'])
     return redirect('/')
 
 
