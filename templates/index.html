@@ -52,7 +52,7 @@
       <input type="radio" name="options" id="3" value="3"> 3 </input>
       <input type="radio" name="options" id="5" value="5"> 5 </input>
       <p></p>
-      {% if target_image %}
+      {% if target_image and images|count > 1 %}
       <input type="submit" value="Predict" />
       {% else %}
       <input type="submit" value="Predict" disabled />
@@ -64,7 +64,7 @@
   <div>
     <h3>Target image</h3>
     <img src="{{ url_for('get_file', filename=target_image) }}" width="300" height="300" />
-    <h3>Top-{{ top_k }} result</h3>
+    <h3>Result ranking</h3>
     <table style="text-align: center">
       <tr>
         <th>Image</th>

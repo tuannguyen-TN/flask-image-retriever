@@ -50,7 +50,7 @@ def Retriever(model_path, target_image, image_list, top_k):
     result_info = [(os.path.basename(img_retrieval.impaths[i]), distances[i]) for i in sorted_indexes]
     print(f'Total elapsed time: {elapsed_time}')
 
-    return result_info[:min(top_k, len(result_info))], min(top_k, len(result_info))
+    return result_info[:top_k]
 
 if __name__ == "__main__":
     print(Retriever(os.path.abspath('../image-retrieval-0001/FP32/image-retrieval-0001.xml'), sys.argv[1], sys.argv[2], int(sys.argv[3])))
