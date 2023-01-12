@@ -5,23 +5,16 @@ import math
 import random
 import datetime
 import sys
+import secrets
 
 sys.path.append('./model/')
 
 from retriever import Retriever
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-SAVE_FOLDER = os.path.abspath('./dataset')
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'dqdoqdq' # required by Flask to upload images
-app.config['SAVE_FOLDER'] = SAVE_FOLDER
-app.config['IMAGES'] = {}
-app.config['TARGET_IMAGE'] = ''
-app.config['IMAGE_LIST'] = os.path.join(app.config['SAVE_FOLDER'], 'images.txt')
-app.config['PREDICTIONS'] = []
-app.config['MODEL_PATH'] = os.path.abspath('image-retrieval-0001/FP32/image-retrieval-0001.xml')
-app.config['TOP_K'] = 0
+app.config.from_pyfile('./config.py')
 
 
 def generate_image_list():
