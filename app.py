@@ -66,7 +66,7 @@ def delete(filename):
             generate_image_list()
         return redirect('/')
     except:
-        return 'There was a problem deleting that task!'
+        return 'There was a problem deleting that row!'
 
 
 @app.route('/uploads/<filename>')
