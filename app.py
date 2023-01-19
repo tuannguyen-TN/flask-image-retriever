@@ -18,10 +18,10 @@ app.config.from_pyfile('./config.py')
 
 
 def generate_image_list():
-    with open(f'{SAVE_FOLDER}/images.txt', 'w') as image_list:
+    with open(f'{app.config["SAVE_FOLDER"]}/images.txt', 'w') as image_list:
         for index, filename in enumerate(app.config['IMAGES'].keys()):
             if filename != app.config['TARGET_IMAGE']:
-                line = f'{SAVE_FOLDER}/{filename} {index + 1}\n'
+                line = f'{app.config["SAVE_FOLDER"]}/{filename} {index + 1}\n'
                 image_list.write(line)
 
 
