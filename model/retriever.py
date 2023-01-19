@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 from image_retrieval import ImageRetrieval
 from common import central_crop
 
-log.basicConfig(format='[ %(levelname)s ] %(message)s', level=log.INFO, stream=sys.stdout)
-
 
 def time_elapsed(func, *args):
     """ Auxiliary function that helps measure elapsed time. """
