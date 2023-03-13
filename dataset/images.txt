@@ -1,4 +1,0 @@
-/Users/shinobi07/Desktop/school/year4/code/retrievimage/code/dataset/0.jpg 1
-/Users/shinobi07/Desktop/school/year4/code/retrievimage/code/dataset/2.jpg 3
-/Users/shinobi07/Desktop/school/year4/code/retrievimage/code/dataset/3.jpg 4
-/Users/shinobi07/Desktop/school/year4/code/retrievimage/code/dataset/4.jpg 5

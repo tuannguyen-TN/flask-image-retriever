@@ -48,6 +48,9 @@ def Retriever(model_path, target_image, image_list, top_k):
     result_info = [(os.path.basename(img_retrieval.impaths[i]), distances[i]) for i in sorted_indexes]
     print(f'Total elapsed time: {elapsed_time}')
 
+    for image in result_info[:top_k]:
+        print(image[0])
+
     return result_info[:top_k]
 
 if __name__ == "__main__":
