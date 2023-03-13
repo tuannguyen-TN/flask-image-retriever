@@ -53,6 +53,12 @@ def home():
     return render_template('index.html', images=app.config['IMAGES'], target_image=app.config['TARGET_IMAGE'], results=app.config['PREDICTIONS'], top_k=app.config['TOP_K'])
 
 
+@app.route('/refresh', methods=['GET', 'POST'])
+def refresh():
+    app.config.from_pyfile('./config.py')
+    return redirect('/')
+
+
 @app.route('/delete/<string:filename>')
 def delete(filename):
     try:
