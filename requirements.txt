@@ -14,7 +14,7 @@ fast_ctc_decode==0.3.2
 filelock==3.8.0
 findit==0.5.9
 fire==0.4.0
-Flask==2.2.2
+Flask==2.2.5
 Flask-Session==0.4.0
 fonttools==4.38.0
 huggingface-hub==0.10.1
